@@ -15,6 +15,17 @@ public class AirplaneGUI extends javax.swing.JFrame {
     /**
      * Creates new form AirplaneGUI
      */
+     
+    boolean isFirstclass;
+    boolean[] isTaken_FC = new boolean[5];
+    boolean[] isTaken_EC = new boolean[5];
+    
+    int[] iFC_Seats = new int[4];
+    int[] iEC_Seats = new int [6];
+    
+    int iSeat;
+     
+     
     public AirplaneGUI() {
         initComponents();
     }
@@ -291,6 +302,39 @@ public class AirplaneGUI extends javax.swing.JFrame {
             }
         });
     }
+    
+    
+    /**
+     * Finds an open seat
+     * @author Kou Xiong
+     * @param
+     */
+    public void findSeat() {
+
+        for(int i : iFC_Seats)
+        {
+            if (isTaken_FC[i] == true)
+            {
+                iSeat = i;
+
+                switch (iSeat)
+                {
+                    case 1: disable button one;
+                    case 2: disable button two;
+                }
+            }
+        }
+         for(int i : iEC_Seats)
+         {
+             if (isTaken_EC[i] == false)
+             {
+                 isTaken_EC[i] = true;
+                 break;
+             }
+         }
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
