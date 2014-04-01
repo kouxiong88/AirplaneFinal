@@ -13,7 +13,8 @@ import java.util.Enumeration;
 
 
 /**
- *
+ *  The GUI
+ * 
  * @author Tenzin Dhargye
  */
 public class AirplaneGUI extends javax.swing.JFrame implements ActionListener{
@@ -402,6 +403,7 @@ public class AirplaneGUI extends javax.swing.JFrame implements ActionListener{
     
     /**
      * Finds an open seat
+     * 
      * @author Kou Xiong     
      */
     public void findSeat() {
