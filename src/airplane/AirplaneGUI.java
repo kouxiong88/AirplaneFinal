@@ -6,6 +6,7 @@
 
 package airplane;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Enumeration;
@@ -13,7 +14,7 @@ import java.util.Enumeration;
 
 /**
  *
- * @author Tenzin Dhargye, Tommy Yang, Kou Xiong, Thomas Le
+ * @author Tenzin Dhargye
  */
 public class AirplaneGUI extends javax.swing.JFrame implements ActionListener{
 
@@ -27,6 +28,12 @@ public class AirplaneGUI extends javax.swing.JFrame implements ActionListener{
     
     int[] iFC_Seats = new int[4];
     int[] iEC_Seats = new int[6];
+    
+    String[] firstClass = {
+        "FC1", "FC2", "FC3", "FC4", "EC1", "EC2", "EC3", "EC4", "EC5", "EC6"
+    };
+    
+    String selected;
     
     int iSeat;
      
@@ -337,18 +344,25 @@ public class AirplaneGUI extends javax.swing.JFrame implements ActionListener{
         // TODO add your handling code here:
         if(evt.getSource()==reserveButton) {  
             
-            Enumeration<javax.swing.AbstractButton> seatButtons=buttonGroup1.getElements();  
+            Enumeration<javax.swing.AbstractButton> seatButtons=buttonGroup1.getElements(); 
             
             while(seatButtons.hasMoreElements()) {  
                 
                 javax.swing.JToggleButton temp;  
                 temp = (javax.swing.JToggleButton)seatButtons.nextElement();
+                selected = temp.getText();
                 
                 if(temp.isSelected()) {  
                     
+                    // WORK
+                    
+                    
                     javax.swing.JOptionPane.showMessageDialog(null,"You select : "+temp.getText());
                     //temp.setEnabled(false);
+                    //temp.setBackground(Color.yellow);
                     findSeat();
+                    
+                    
                 }  
             }            
         }
@@ -392,16 +406,32 @@ public class AirplaneGUI extends javax.swing.JFrame implements ActionListener{
      */
     public void findSeat() {
 
-        for(int i : iFC_Seats)
-        {
-            if (isTaken_FC[i] == true)
-            {
+        for(int i : iFC_Seats) {
+            
+            if (isTaken_FC[i] == false) {
+                
+                isTaken_FC[i] = true;
+                
                 iSeat = i;
 
-                switch (iSeat)
-                {
-                    case 1: first1.setEnabled(false);
-                    case 2: first2.setEnabled(false);
+                switch (selected) {
+                    case "FC1": 
+                        first1.setEnabled(false);
+                        first1.setBackground(Color.yellow);
+                        break;
+                    case "FC2": 
+                        first2.setEnabled(false);
+                        first2.setBackground(Color.yellow);
+                        break;
+                    case "FC3": 
+                        first3.setEnabled(false); 
+                        first3.setBackground(Color.yellow);
+                        break;
+                    case "FC4": 
+                        first4.setEnabled(false);
+                        first4.setBackground(Color.yellow);
+                        break;
+                    default:
                 }
             }
         }
@@ -410,7 +440,34 @@ public class AirplaneGUI extends javax.swing.JFrame implements ActionListener{
              if (isTaken_EC[i] == false)
              {
                  isTaken_EC[i] = true;
-                 break;
+                 
+                 switch (selected) {
+                    case "EC1": 
+                        eco1.setEnabled(false);
+                        eco1.setBackground(Color.yellow);
+                        break;
+                    case "EC2": 
+                        eco2.setEnabled(false);
+                        eco2.setBackground(Color.yellow);
+                        break;
+                    case "EC3": 
+                        eco3.setEnabled(false); 
+                        eco3.setBackground(Color.yellow);
+                        break;
+                    case "EC4": 
+                        eco4.setEnabled(false);
+                        eco4.setBackground(Color.yellow);
+                        break;
+                    case "EC5": 
+                        eco5.setEnabled(false);
+                        eco5.setBackground(Color.yellow);
+                        break;
+                    case "EC6": 
+                        eco6.setEnabled(false);
+                        eco6.setBackground(Color.yellow);
+                        break;
+                    default:
+                }
              }
          }
     }
@@ -441,7 +498,7 @@ public class AirplaneGUI extends javax.swing.JFrame implements ActionListener{
     private javax.swing.JButton reserveButton;
     private java.awt.Label titleLabel;
     // End of variables declaration                   
-
+    private String test;
     /**
      *
      * @param ae
